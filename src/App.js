@@ -26,7 +26,9 @@ function App() {
     // TODO
     await api.delete(`repositories/${id}`);
 
-    repositories.splice(id, 1);
+    api.get('repositories').then(response => {
+      setRepositories(response.data);
+    });
   }
 
   return (
