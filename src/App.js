@@ -26,9 +26,9 @@ function App() {
     // TODO
     await api.delete(`repositories/${id}`);
 
-    api.get('repositories').then(response => {
-      setRepositories(response.data);
-    });
+    const response = await api.get('repositories');
+    
+    setRepositories(response.data);
   }
 
   return (
