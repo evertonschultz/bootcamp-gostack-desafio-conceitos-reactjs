@@ -9,14 +9,12 @@ function App() {
     api.get('repositories').then(response => {
       setRepositories(response.data);
     });
-  }, [repositories]);
+  }, []);
 
   async function handleAddRepository() {
     // TODO
     const response = await api.post('repositories', {
       title: `Novo projeto ${Date.now()}`,
-      url: "https://github.com/",
-      techs: "Node.js, ReactJS",
     });
     
     const repository = response.data;
@@ -28,7 +26,7 @@ function App() {
     // TODO
     await api.delete(`repositories/${id}`);
 
-    setRepositories(repositories.splice(id, 1));
+    repositories.splice(id, 1);
   }
 
   return (
