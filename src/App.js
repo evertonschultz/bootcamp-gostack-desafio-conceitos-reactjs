@@ -26,9 +26,13 @@ function App() {
     // TODO
     await api.delete(`repositories/${id}`);
 
-    const response = await api.get('repositories');
+    const projectIndex = repositories.findIndex(project => project.id === id);
+
+    const attRepositories = repositories.slice();
+
+    attRepositories.splice(projectIndex, 1);
     
-    setRepositories(response.data);
+    setRepositories(attRepositories);
   }
 
   return (
